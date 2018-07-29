@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
-import { getCurrentUser } from '../actions/userActions'
+import { getCurrentUser } from 'src/actions/userActions'
 
 export default ChildComponent => {
   class RequireAuth extends Component {
@@ -25,7 +25,5 @@ export default ChildComponent => {
     return { user: user.user }
   }
 
-  return connect(mapStateToProps, { getCurrentUser })(
-    RequireAuth
-  )
+  return connect(mapStateToProps, { getCurrentUser })(RequireAuth)
 }

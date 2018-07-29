@@ -1,31 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import TransactionRow from './transactionRow';
-import Menu from './navMenu';
-import RequireAuth from './auth';
 
-import { fetchTransaction } from '../actions/transactionActions';
-import { fetchBank } from "../actions/bankActions";
+import TransactionRow from 'src/components/transactionRow';
+import Menu from 'src/components/navMenu';
+import RequireAuth from 'src/components/auth';
+
+import { fetchTransaction } from 'src/actions/transactionActions';
+import { fetchBank } from "src/actions/bankActions";
 
 class Main extends React.Component {
-  async componentWillMount () {
-    await(this.props.dispatch(fetchBank()));
-    await(this.props.dispatch(fetchTransaction()));
+  componentWillMount () {
+    this.props.dispatch(fetchBank());
+    this.props.dispatch(fetchTransaction());
   }
 
   render () {
-    let dataResult = 'No result';
-    
-    if (this.props.transactions.length) {
-      dataResult = this.props.transactions.map((item, index) => {
-        return <TransactionRow data={item} key={index}/>
+    let dataResult = 'Нет транзвкций';
+    let { transactions, banks, history, user } = this.props;
+
+    if (transactions.length > 0) {
+      dataResult = transactions.map((item, index) => {
+        return <TransactionRow banks={banks} data={item} key={index}/>
       })
     }
     
     return (
       <div className="container">
-        <Menu />
+        <Menu history={history} user={this.props.user} />
         <h2>Список транзакций</h2>
         {dataResult}
       </div>
@@ -35,7 +36,8 @@ class Main extends React.Component {
 
 const mapStateToProps = (store) => {
   return {
-    transactions: store.transaction.transactions
+    transactions: store.transaction.transactions,
+    banks: store.bank.banks
   }
 }
 

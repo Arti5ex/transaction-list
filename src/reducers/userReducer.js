@@ -9,6 +9,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, user: action.payload || false }
     case "USER_SET_FAILED":
       return { ...state, user: null }
+    case "USER_LOGOUT_SUCCEEDED":
+      return { ...state, user: null }
     default:
       return state
   }

@@ -16,9 +16,9 @@ app.route('/api/fetch-transactions')
   })
 
 app.route('/api/fetch-banks')
-.get((req, res) => {
-  res.json({"ok": 1})
-})
+  .get((req, res) => {
+    res.json({"ok": 1})
+  })
 
 app.use(express.static(__dirname + '/public'));
 app.get('*', function response(req, res) {

@@ -1,15 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { LocalForm, Control } from 'react-redux-form';
-import { setUser } from '../actions/userActions'
+
+import { setUser } from 'src/actions/userActions'
 
 class Login extends React.Component {
 
-  handleSubmitForm (values) {
-    this.props.dispatch(setUser({"name": values.name, "password": values.password}));
+  async handleSubmitForm (values) {
+    await this.props.dispatch(setUser({"name": values.name, "password": values.password}));
 
     if (this.props.user) {
-      this.props.history.push("/");
+      await this.props.history.push("/");
     }
   }
 

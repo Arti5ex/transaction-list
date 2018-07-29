@@ -1,5 +1,5 @@
 export default function reducer (state = {
-  banks: [],
+  banks: new Map(),
 }, action) {
   switch (action.type) {
     case 'BANK_FETCH_SUCCEEDED': {
@@ -11,7 +11,7 @@ export default function reducer (state = {
     case 'BANK_FETCH_FAILED': {
       return {
         ...state,
-        banks: []
+        banks: new Map()
       }
     }
     default:

@@ -16,6 +16,11 @@ module.exports = {
     path: path.join(__dirname, '/public/'), 
     filename: 'bundle.js' 
   },
+  resolve: {
+    alias: {
+      'src': path.resolve('src/')
+    }
+  },
   module: {
     loaders: [
       {

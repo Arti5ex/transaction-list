@@ -1,91 +1,82 @@
-body{
+body {
   font-size: 14px;
   font-family: Arial;
   margin: 0;
-  padding: 0;
-}
-.container{
+  padding: 0; }
+
+.container {
   width: 800px;
   margin: 0 auto;
-  padding: 10px 0 0 0;
-}
-.transaction-row{
+  padding: 10px 0 0 0; }
+
+.transaction-row {
   display: flex;
   align-items: center;
-  padding: 15px 20px;
-
-  .id {
+  padding: 15px 20px; }
+  .transaction-row .id {
     font-size: 1.1rem;
     line-height: 1rem;
-    width: 40px;
-  }
-  .amount{
+    width: 40px; }
+  .transaction-row .amount {
     width: 40%;
-    padding:  0 10px;
-  }
-  .remove{
+    padding: 0 10px; }
+  .transaction-row .remove {
     margin-left: auto;
     background: red;
     padding: 5px 10px;
     border-radius: 3px;
     font-size: 1rem;
-    cursor: pointer;
-  }
-}
+    cursor: pointer; }
+
 .transaction-row:nth-child(2n) {
-  background: #f5f5f5;
-}
+  background: #f5f5f5; }
+
 .menu {
   position: absolute;
   right: 10px;
   top: 20px;
   background: #f4f4f4;
   height: auto;
-  padding: 10px;
-
-  .menu-row:not(:last-child){
-    margin-bottom: 10px;
-  }
-
-  button.logout{
+  padding: 10px; }
+  .menu .menu-row:not(:last-child) {
+    margin-bottom: 10px; }
+  .menu button.logout {
     width: 100%;
     text-align: left;
-    background-color: #9494f1;
-  }
-}
+    background-color: #9494f1; }
+
 input,
 select {
   margin-right: 20px;
   border: medium none;
-  background: rgb(243, 243, 243) none repeat scroll 0% 0%;
+  background: #f3f3f3 none repeat scroll 0% 0%;
   padding: 0px 18px;
   color: #9b9b9b;
   font-size: 16px;
   box-sizing: border-box;
-  height: 41px;
-}
-button{
+  height: 41px; }
+
+button {
   border: medium none;
   box-sizing: border-box;
   height: 41px;
   vertical-align: top;
   padding: 0px 20px;
-  color: rgb(255, 255, 255);
-  background: rgb(139, 218, 139) none repeat scroll 0% 0%;
+  color: white;
+  background: #8bda8b none repeat scroll 0% 0%;
   font-size: 16px;
   width: 12%;
-  cursor: pointer;
-}
-button.select{
-  background: rgb(139, 179, 218) none repeat scroll 0% 0%
-}
-.controls{
-  padding: 15px 0;
-}
-.button{
+  cursor: pointer; }
+
+button.select {
+  background: #8bb3da none repeat scroll 0% 0%; }
+
+.controls {
+  padding: 15px 0; }
+
+.button {
   padding: 10px;
-  background: rgb(139, 218, 139);
+  background: #8bda8b;
   color: #fff;
   text-decoration: none;
-  display: block;
-}
+  display: block; }

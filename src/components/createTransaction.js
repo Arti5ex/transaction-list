@@ -2,9 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { LocalForm, Control } from 'react-redux-form';
 
-import { fetchBank } from "../actions/bankActions";
-import { addTransaction } from "../actions/transactionActions";
-import Menu from './navMenu';
+import { fetchBank } from "src/actions/bankActions";
+import { addTransaction } from "src/actions/transactionActions";
+import Menu from 'src/components/navMenu';
+import RequireAuth from 'src/components/auth';
+
 
 class CreateTransaction extends React.Component {
   async componentWillMount () {
@@ -16,22 +18,19 @@ class CreateTransaction extends React.Component {
     this.props.history.goBack();
   };
 
-  render () { 
-    let banksList = 'No result';
-    let banks = [...this.props.banks];
-    banks.unshift({"id": 0, "name": "не выбрано"});
-
-    if (banks.length) {
-      banksList = banks.map((item, index) => {
-        return <option value={item.id} key={index}>{item.name}</option>;
+  render () {
+    let banksList = [<option value={0} key={0}>не вырано</option>];
+    let {banks, history} = this.props;
+ 
+    if (banks.size > 0) {
+      banks.forEach((item, index) => {
+        banksList.push(<option value={item.id} key={index}>{item.name}</option>);
       })
-    } else {
-      banksList = 'Нет транзакций'
     }
 
     return (
       <div className="container">
-        <Menu />
+        <Menu history={history} />
         <h2>Создать транзакцию</h2>
         <LocalForm
           onSubmit={(values) => this.handleSubmitForm(values)}
@@ -53,4 +52,4 @@ const mapStateToProps = (store) => {
   }
 }
 
-export default connect(mapStateToProps)(CreateTransaction)
+export default connect(mapStateToProps)(RequireAuth(CreateTransaction))

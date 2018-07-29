@@ -1,5 +1,5 @@
 import { put, takeEvery, all, fork, call } from 'redux-saga/effects'
-import { fetchTransactions } from './api';
+import { fetchTransactions } from 'src/sagas/api';
 
 function* fetchTransaction(action) {
    try {

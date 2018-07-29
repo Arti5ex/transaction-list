@@ -34,6 +34,16 @@ function* setUser(action) {
   }
 }
 
+function* logoutUser() {
+  try {
+    localStorage.removeItem('user');
+   
+    yield put({type: "USER_LOGOUT_SUCCEEDED"});
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
 function* getWatcher() {
   yield takeEvery("USER_GET", getUser);
 }
@@ -42,9 +52,14 @@ function* setWatcher() {
   yield takeEvery("USER_SET", setUser);
 }
 
+function* logoutWatcher() {
+  yield takeEvery("USER_LOGOUT", logoutUser);
+}
+
 export default function* userSagas() {
   yield all([
     fork(getWatcher),
-    fork(setWatcher)
+    fork(setWatcher),
+    fork(logoutWatcher)
   ])
 }

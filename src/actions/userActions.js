@@ -6,3 +6,7 @@ export function getCurrentUser() {
 export function setUser(user) {
   return { type: "USER_SET", payload: user }
 }
+
+export function logoutUser() {
+  return { type: "USER_LOGOUT", _: '' }
+}
